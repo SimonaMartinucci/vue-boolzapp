@@ -66,54 +66,19 @@
                 </div>
                  <!-- parte chat -->
                   <div class="cont-chat">
-                    <div class="banner chat">
-                        <div class="user active">
-                            <div class="icon">
-                                <img src="img/male1.jpg" alt="male1">
-                            </div>
-                            <div class="access">
-                                <div class="username">Michele</div>
-                                <div class="last-access">Ultimo accesso oggi alle 12.00</div>
-                            </div>
-                            <div class="hour">12.55</div>
-                        </div>
-                    </div>
-                    <div class="banner chat">
+                    <div class="banner chat" v-for="(contact, index) in contacts" :key="index">
                         <div class="user">
                             <div class="icon">
-                                <img src="img/male1.jpg" alt="male1">
+                                <img :src="contacts[index].avatar" alt="male1">
                             </div>
                             <div class="access">
-                                <div class="username">Michele</div>
-                                <div class="last-access">Ultimo accesso oggi alle 12.00</div>
+                                <div class="username">{{contact.name}}</div>
+                                <div class="last-access">Ultimo accesso {{ getDate(contact.messages[contact.messages.length - 1].date) }} alle {{ getTime(contact.messages[contact.messages.length - 1].date) }}</div>
                             </div>
-                            <div class="hour">12.55</div>
+                            <div class="hour">{{ getTime(contact.messages[contact.messages.length - 1].date) }}</div>
                         </div>
                     </div>
-                    <div class="banner chat">
-                        <div class="user">
-                            <div class="icon">
-                                <img src="img/male1.jpg" alt="male1">
-                            </div>
-                            <div class="access">
-                                <div class="username">Michele</div>
-                                <div class="last-access">Ultimo accesso oggi alle 12.00</div>
-                            </div>
-                            <div class="hour">12.55</div>
-                        </div>
-                    </div>
-                    <div class="banner chat">
-                        <div class="user">
-                            <div class="icon">
-                                <img src="img/male1.jpg" alt="male1">
-                            </div>
-                            <div class="access">
-                                <div class="username">Michele</div>
-                                <div class="last-access">Ultimo accesso oggi alle 12.00</div>
-                            </div>
-                            <div class="hour">12.55</div>
-                        </div>
-                    </div>
+
                   </div>
             </div>
 
