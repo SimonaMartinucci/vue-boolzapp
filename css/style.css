@@ -17,7 +17,7 @@ body {
 }
 
 #bg-up {
-    height: 150px;
+    height: 120px;
     background-color: #009688;
     padding-top: 30px;
 }
@@ -32,9 +32,6 @@ body {
 /* PARTE DESTRA chat */
 .cont-right {
     width: calc((100% / 3) * 2);
-    /* DEBUG */
-    height: 100%;
-    /* background-color: green; */
 }
 
 .banner,
@@ -160,13 +157,11 @@ body {
 /* PARTE SINISTRA chat */
 .cont-left {
     width: calc((100% / 3) * 1);
-    /* DEBUG */
-    height: 100%;
-    background-color: yellow;
+    background-color: white;
 }
 
 /* parte banner sinistro */
-.cont-left .banner {
+.cont-left .my-user {
     border-right: solid 1px rgb(201, 200, 200);
 }
 
@@ -201,6 +196,7 @@ body {
     background-color: #fafafa;
     color: var(--light-gray); 
     padding: 10px;  
+    height: 50px;
 }
 
 .search-bar {
@@ -221,4 +217,29 @@ body {
     border: none;
     width: 100%;
     padding: 0 5px;
+}
+
+/* parte chat */ 
+.cont-chat {
+    overflow-y: auto;
+    height: calc(100% - 170px);
+}
+
+.chat {
+    border-bottom: solid 1px rgb(230, 230, 230);
+    background-color: white;
+}
+
+.chat .user {
+    width: 100%;
+    border: none;
+    position: relative;
+}
+
+.chat .hour {
+    top: 10px;
+}
+
+.active {
+    background-color: #eaeaea;
 }
