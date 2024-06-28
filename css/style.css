@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+    font-family: "Lato", sans-serif;
 }
 
 /* custom properties */
@@ -113,6 +113,42 @@ body {
     color: var(--light-gray);
 }
 
+/* parte contenuto messaggi */
+.content {
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.message {
+    width: 300px;
+    padding: 15px 10px;
+    font-size: 12px;
+    color: var(--gray);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.sent {
+    background-color: #d5f9ba;
+    margin-right: 50px;
+    margin-left: calc(100% - 350px);
+}
+
+.rec {
+    background-color: white;
+    margin-left: 50px;
+}
+
+.hour {
+    position: absolute;
+    right: 8px;
+    bottom: 5px;
+    font-size: 10px;
+    color: var(--light-gray);
+}
+
+
 /* parte invio messaggio destra */
 .send i {
     font-size: 20px;
@@ -120,7 +156,7 @@ body {
     color: var(--light-gray);
 }
 
-.send .message {
+.send .my-text {
     height: 35px;
     width: 80%;
     border: none;
