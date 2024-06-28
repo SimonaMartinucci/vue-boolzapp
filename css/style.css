@@ -29,14 +29,6 @@ body {
     display: flex;
 }
 
-/* PARTE SINISTRA chat */
-.cont-left {
-    width: calc((100% / 3) * 1);
-    /* DEBUG */
-    height: 100%;
-    background-color: yellow;
-}
-
 /* PARTE DESTRA chat */
 .cont-right {
     width: calc((100% / 3) * 2);
@@ -162,4 +154,44 @@ body {
     border: none;
     border-radius: 5px;
     padding: 5px;
+}
+
+
+/* PARTE SINISTRA chat */
+.cont-left {
+    width: calc((100% / 3) * 1);
+    /* DEBUG */
+    height: 100%;
+    background-color: yellow;
+}
+
+/* parte banner sinistro */
+.cont-left .banner {
+    border-right: solid 1px rgb(201, 200, 200);
+}
+
+/* banner notifiche */
+.notif {
+    background-color: #8edafc;
+    width: 100%;
+}
+
+.notif-ok {
+    width: 80%;
+}
+
+.notif .icon {
+    padding-top: 5px;
+}
+
+.notif i {
+    background-color: white;
+    color: #8edafc;
+    margin-left: 15px;
+    padding: 12px 10px;
+    border-radius: 50%;
+}
+
+.notif-ok .last-access {
+    text-decoration: underline;
 }
