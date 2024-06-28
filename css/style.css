@@ -195,3 +195,30 @@ body {
 .notif-ok .last-access {
     text-decoration: underline;
 }
+
+/* barra ricerca */
+.search {
+    background-color: #fafafa;
+    color: var(--light-gray); 
+    padding: 10px;  
+}
+
+.search-bar {
+    display: flex;
+    border: 1px solid rgb(201, 200, 200);
+}
+
+.search-icon {
+    background-color: white;
+    padding: 5px 20px;
+}
+
+.search-icon .fa-solid {
+    color: var(--light-gray);
+}
+
+.search input {
+    border: none;
+    width: 100%;
+    padding: 0 5px;
+}
