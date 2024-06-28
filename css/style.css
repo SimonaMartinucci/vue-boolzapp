@@ -5,6 +5,12 @@
     font-family: "Roboto", sans-serif;
 }
 
+/* custom properties */
+:root {
+    --light-gray: #8c9295;
+    --gray: #575758;
+}
+
 body {
     height: calc(100vh - 150px);
     background-color: #dcdbd2;
@@ -26,9 +32,9 @@ body {
 /* PARTE SINISTRA chat */
 .cont-left {
     width: calc((100% / 3) * 1);
-    background-color: yellow;
     /* DEBUG */
     height: 100%;
+    background-color: yellow;
 }
 
 /* PARTE DESTRA chat */
@@ -43,6 +49,7 @@ body {
 .send {
     height: 60px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -87,12 +94,12 @@ body {
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 2px;
-    color: #575758;
+    color: var(--gray);
 }
 
 .last-access {
     font-size: 10px;
-    color: #8c9295;
+    color: var(--light-gray);
 }
 
 .settings {
@@ -103,5 +110,20 @@ body {
 .settings .fa-solid {
     margin-left: 18px;
     font-size: 20px;
-    color: #8c9295;
+    color: var(--light-gray);
+}
+
+/* parte invio messaggio destra */
+.send i {
+    font-size: 20px;
+    margin: 0 30px;
+    color: var(--light-gray);
+}
+
+.send .message {
+    height: 35px;
+    width: 80%;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
 }
