@@ -3,3 +3,35 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    height: calc(100vh - 150px);
+    background-color: #dcdbd2;
+}
+
+#bg-up {
+    height: 150px;
+    background-color: #009688;
+    padding-top: 30px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto 30px;
+    height: calc(100vh - 60px);
+    display: flex;
+}
+
+.cont-left {
+    width: calc((100% / 3) * 1);
+    background-color: yellow;
+    /* DEBUG */
+    height: 100%;
+}
+
+.cont-right {
+    width: calc((100% / 3) * 2);
+    background-color: green;
+    /* DEBUG */
+    height: 100%;
+}
