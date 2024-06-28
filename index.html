@@ -66,14 +66,14 @@
                 </div>
                  <!-- parte chat -->
                   <div class="cont-chat">
-                    <div class="banner chat" v-for="(contact, index) in contacts" :key="index">
+                    <div class="banner chat" v-for="(contact, index) in contacts" :key="index" @click="activeContact(index)" :class="{ 'active': activeContactIndex === index }">
                         <div class="user">
                             <div class="icon">
-                                <img :src="contacts[index].avatar" alt="male1">
+                                <img :src="contacts[index].avatar" alt="contacts[index].name">
                             </div>
                             <div class="access">
                                 <div class="username">{{contact.name}}</div>
-                                <div class="last-access">Ultimo accesso {{ getDate(contact.messages[contact.messages.length - 1].date) }} alle {{ getTime(contact.messages[contact.messages.length - 1].date) }}</div>
+                                <div class="last-access">Ultimo accesso il {{ getDate(contact.messages[contact.messages.length - 1].date) }} alle {{ getTime(contact.messages[contact.messages.length - 1].date) }}</div>
                             </div>
                             <div class="hour">{{ getTime(contact.messages[contact.messages.length - 1].date) }}</div>
                         </div>
@@ -87,12 +87,12 @@
                 <!-- parte banner destra -->
                 <div class="banner">
                     <div class="user">
-                        <div class="icon">
-                            <img src="img/male1.jpg" alt="male1">
+                        <div class="icon" >
+                            <img :src="contacts[activeContactIndex].avatar" alt="contacts[activeContactIndex].name">
                         </div>
                         <div class="access">
-                            <div class="username">Michele</div>
-                            <div class="last-access">Ultimo accesso oggi alle 12.00</div>
+                            <div class="username">{{contacts[activeContactIndex].name}}</div>
+                            <div class="last-access">Ultimo accesso il {{ getDate(contacts[activeContactIndex].messages[contacts[activeContactIndex].messages.length - 1].date) }} alle {{ getTime(contacts[activeContactIndex].messages[contacts[activeContactIndex].messages.length - 1].date) }}</div>
                         </div>
                     </div>
                     <div class="settings">
@@ -109,17 +109,9 @@
                 </div>
                 <!-- parte contenuto messaggi -->
                 <div class="content">
-                    <div class="message sent">
-                        <span>Ciao</span>
-                        <div class="hour">12.55</div>
-                    </div>
-                    <div class="message sent">
-                        <span>Ciao</span>
-                        <div class="hour">12.55</div>
-                    </div>
-                    <div class="message rec">
-                        <span>Ciao</span>
-                        <div class="hour">12.55</div>
+                    <div class="message" v-for="(text, index) in contacts[activeContactIndex].messages" :key="index" :class="text.status === 'sent' ? 'sent' : 'rec'" @click="activeMessage(index)">
+                        <span>{{text.message}}</span>
+                        <div class="hour">{{ getTime(text.date) }}</div>
                     </div>
                 </div>
                 <!-- parte invio messaggio destra -->

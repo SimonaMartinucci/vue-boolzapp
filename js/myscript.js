@@ -3,6 +3,8 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            activeContactIndex: 0,
+            activeMessageIndex: 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -165,7 +167,8 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
+
             
         }
     },
@@ -178,6 +181,14 @@ createApp({
         // recupero solo data
         getDate(dateTime) {
             return dateTime.split(' ')[0].slice(0, 10);
+        },
+
+        activeContact(index) {
+            this.activeContactIndex = index;
+        },
+
+        activeMessage(index) {
+            this.activeMessageIndex = index;
         }
     }
 }).mount('#app');

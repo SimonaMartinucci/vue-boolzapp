@@ -228,6 +228,7 @@ body {
 .chat {
     border-bottom: solid 1px rgb(230, 230, 230);
     background-color: white;
+    cursor: pointer;
 }
 
 .chat .user {
