@@ -5,6 +5,7 @@ createApp({
         return {
             activeContactIndex: 0,
             activeMessageIndex: 0,
+            inputMessage: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -189,6 +190,65 @@ createApp({
 
         activeMessage(index) {
             this.activeMessageIndex = index;
-        }
+        },
+
+        // inserisco funzione per aggiungere messaggio con tasto enter
+        addMessage() {
+            // metto condizione in modo da non far inviare messaggi vuoti
+            if(this.inputMessage !== '') {
+                // genero data e ora di oggi
+                const now = new Date();
+
+                // formatto data e ora in modo che corrispondano al formato di tutte le altre dell'array
+                const formattedTime = new Intl.DateTimeFormat('it-IT', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                }).format(now);
+
+                // creo nuovo oggetto
+                const newMessage =
+                {
+                    date: `${now.toLocaleDateString('it-IT')} ${formattedTime}`,
+                    message: this.inputMessage,
+                    status: 'sent'
+                };
+
+                // inserisco l'oggetto nell'array
+                this.contacts[this.activeContactIndex].messages.push(newMessage);
+            }
+
+            // svuoto ogni volta il campo di inserimento dei messaggi
+            this.inputMessage = '';
+
+            // faccio partire funzione di risposta automatica dopo 1 secondo
+            setTimeout(this.autoText, 1000)
+        },
+
+        // funzione risposta automatica
+        autoText() {
+            // stesso procedimento precedente per la data e l'ora attuale
+            const now = new Date();
+
+                const formattedTime = new Intl.DateTimeFormat('it-IT', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: false
+                }).format(now);
+
+                // creo messaggio automatico
+                const autoMessage =
+                {
+                    date: `${now.toLocaleDateString('it-IT')} ${formattedTime}`,
+                    message: 'Ok',
+                    status: 'received'
+                };
+
+                // pusho oggetto nell'array
+                this.contacts[this.activeContactIndex].messages.push(autoMessage);
+        },
+
     }
 }).mount('#app');
