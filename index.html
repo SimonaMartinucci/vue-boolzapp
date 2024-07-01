@@ -73,9 +73,9 @@
                             </div>
                             <div class="access">
                                 <div class="username">{{contact.name}}</div>
-                                <div class="last-access">Ultimo accesso il {{ getDate(contact.messages[contact.messages.length - 1].date) }} alle {{ getTime(contact.messages[contact.messages.length - 1].date) }}</div>
+                                <div class="last-access">{{ contact.messages[contact.messages.length - 1].message }}</div>
                             </div>
-                            <div class="hour">{{ getTime(contact.messages[contact.messages.length - 1].date) }}</div>
+                            <div class="hour">{{ getDate(contact.messages[contact.messages.length - 1].date) }} {{ getTime(contact.messages[contact.messages.length - 1].date) }}</div>
                         </div>
                     </div>
 
@@ -112,6 +112,11 @@
                     <div class="message" v-for="(text, index) in contacts[activeContactIndex].messages" :key="index" :class="text.status === 'sent' ? 'sent' : 'rec'" @click="activeMessage(index)">
                         <span>{{text.message}}</span>
                         <div class="hour">{{ getTime(text.date) }}</div>
+                        <i class="fa-solid fa-chevron-down" @click="activeMenu(index)"></i>
+                        <div class="menu" v-if="menuIndex === index">
+                            <div class="info">Message info</div>
+                            <div class="delete" @click="deleteMessage(index)">Delete message</div>
+                        </div>
                     </div>
                 </div>
                 <!-- parte invio messaggio destra -->

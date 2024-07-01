@@ -8,6 +8,7 @@ createApp({
             inputMessage: '',
             inputSearch: '',
             filteredArray: [],
+            menuIndex: null,
             contacts: [
                 {
                     name: 'Michele',
@@ -259,10 +260,24 @@ createApp({
 
             // utilizzo filter e faccio comparazione tra input dell'utente e nome dei contatti
             this.filteredArray = this.contacts.filter(contact => contact.name.toLowerCase().includes(search));
+        },
+
+        activeMenu(index) {
+            // se il menu è già aperto lo chiudo rimettendolo a null, altrimenti prende l'indice del messaggio sotto il quale voglio aprire menu
+            this.menuIndex = this.menuIndex === index ? null : index;
+        },
+
+        deleteMessage(index) {
+            // cancello messaggio
+            this.contacts[this.activeContactIndex].messages.splice(index, 1);
+            // se cancello messaggio, chiudo automaticamente il menu
+            if (this.menuIndex === index) {
+                this.menuIndex = null; 
+            };
         }
     },
     
-    // faccio in modo che vengano visualizzati tutti i contatti al caricamento della
+    // faccio in modo che vengano visualizzati tutti i contatti al caricamento della pagina
     mounted() {
         this.filteredArray = this.contacts;
     }
