@@ -61,12 +61,12 @@
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </a>
                         </div>
-                        <input type="text" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="inputSearch" @input="filteredContacts">
                     </div>
                 </div>
                  <!-- parte chat -->
                   <div class="cont-chat">
-                    <div class="banner chat" v-for="(contact, index) in contacts" :key="index" @click="activeContact(index)" :class="{ 'active': activeContactIndex === index }">
+                    <div class="banner chat" v-for="(contact, index) in filteredArray" :key="index" @click="activeContact(index)" :class="{ 'active': activeContactIndex === index }">
                         <div class="user">
                             <div class="icon">
                                 <img :src="contacts[index].avatar" alt="contacts[index].name">

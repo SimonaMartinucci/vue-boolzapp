@@ -6,6 +6,8 @@ createApp({
             activeContactIndex: 0,
             activeMessageIndex: 0,
             inputMessage: '',
+            inputSearch: '',
+            filteredArray: [],
             contacts: [
                 {
                     name: 'Michele',
@@ -250,5 +252,18 @@ createApp({
                 this.contacts[this.activeContactIndex].messages.push(autoMessage);
         },
 
+        // funzione per barra di ricerca
+        filteredContacts() {
+            // creo variabile e faccio in modo di avere sempre e solo lettere minuscole indipendentemente dall'input dell'utente
+            const search = this.inputSearch.toLowerCase();
+
+            // utilizzo filter e faccio comparazione tra input dell'utente e nome dei contatti
+            this.filteredArray = this.contacts.filter(contact => contact.name.toLowerCase().includes(search));
+        }
+    },
+    
+    // faccio in modo che vengano visualizzati tutti i contatti al caricamento della
+    mounted() {
+        this.filteredArray = this.contacts;
     }
 }).mount('#app');
