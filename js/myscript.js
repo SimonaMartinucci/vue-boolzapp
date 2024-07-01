@@ -11,7 +11,10 @@ createApp({
             menuIndex: null,
             autoResponse: '',
             stoScrivendo: false,
+            openedDeleteMenu: false,
             openedMenu: false,
+            newContName: '',
+            newContAvatar: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -316,8 +319,30 @@ createApp({
         },
 
         // se il menu è aperto si chiude e viceversa
+        toggleDeleteMenu() {
+            this.openedDeleteMenu = !this.openedDeleteMenu;
+        },
+
+        // se il menu è aperto si chiude e viceversa
         toggleMenu() {
             this.openedMenu = !this.openedMenu;
+        },
+
+        addContact() {
+            // aggiungo nuovo contatto 
+            this.contacts.push({
+                name: this.newContName,
+                avatar: this.newContAvatar,
+                visible: true,
+                messages: []  
+            });
+
+            // Svuoto i due campi compilati
+            this.newContName = '';
+            this.newContAvatar = '';
+
+            // chiudo il menu
+            this.openedMenu = false;
         }
     },
     

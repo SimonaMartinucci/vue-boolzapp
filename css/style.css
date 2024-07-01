@@ -216,6 +216,33 @@ body {
     border-right: solid 1px rgb(201, 200, 200);
 }
 
+.add-cont {
+    width: 350px;
+    padding: 10px;
+    text-align: left;
+    bottom: -150px;
+}
+
+.add-cont h5,
+.add-cont input,
+.add-cont button {
+    margin: 10px;
+}
+
+.add-cont h5 {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.add-cont input {
+    margin: 5px;
+    width: 90%;
+}
+
+.add-cont button {
+    display: block;
+}
+
 /* banner notifiche */
 .notif {
     background-color: #8edafc;

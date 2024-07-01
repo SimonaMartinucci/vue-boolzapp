@@ -35,13 +35,21 @@
                     </div>
                     <div class="settings">
                         <a href="#">
-                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-user-plus" @click="toggleMenu">
+                                <div class="menu add-cont" v-if="openedMenu === true" @click.stop>
+                                    <h5>Aggiungi un nuovo contatto</h5>
+                                    <input type="text" placeholder="Inserisci il nome" v-model="newContName">
+                                    <input type="text" placeholder="Inserisci il link dell'immagine" v-model="newContAvatar">
+                                    <button @click="addContact">Inserisci</button>
+                                </div>
+                            </i>
                         </a>
                         <a href="#">
                             <i class="fa-solid fa-message"></i>
                         </a>
                         <a href="#">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                            <i class="fa-solid fa-ellipsis-vertical">
+                            </i>
                         </a>   
                     </div>
                 </div>
@@ -107,8 +115,8 @@
                             <i class="fa-solid fa-paperclip"></i>
                         </a>
                         <a href="#">
-                            <i class="fa-solid fa-ellipsis-vertical" @click="toggleMenu">
-                                <div class="menu" v-if="openedMenu === true">
+                            <i class="fa-solid fa-ellipsis-vertical" @click="toggleDeleteMenu">
+                                <div class="menu" v-if="openedDeleteMenu === true">
                                     <div class="delete" @click="deleteChat">Delete chat</div>
                                     <div class="delete" @click="deleteContact">Delete contact</div>
                                 </div>
