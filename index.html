@@ -107,10 +107,10 @@
                             <i class="fa-solid fa-paperclip"></i>
                         </a>
                         <a href="#">
-                            <i class="fa-solid fa-ellipsis-vertical">
-                                <div class="menu">
-                                    <div class="delete"></div>
-                                    <div class="delete"></div>
+                            <i class="fa-solid fa-ellipsis-vertical" @click="toggleMenu">
+                                <div class="menu" v-if="openedMenu === true">
+                                    <div class="delete" @click="deleteChat">Delete chat</div>
+                                    <div class="delete" @click="deleteContact">Delete contact</div>
                                 </div>
                             </i>
                         </a>   

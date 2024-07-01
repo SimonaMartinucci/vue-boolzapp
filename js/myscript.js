@@ -11,6 +11,7 @@ createApp({
             menuIndex: null,
             autoResponse: '',
             stoScrivendo: false,
+            openedMenu: false,
             contacts: [
                 {
                     name: 'Michele',
@@ -304,12 +305,19 @@ createApp({
             };
         },
 
+        // cancello tutti i messaggi della chat
         deleteChat() {
             this.contacts[this.activeContactIndex].messages = [];
         },
 
+        // cancello il contatto rimuovendo tutto il suo oggetto dall'array
         deleteContact() {
             this.contacts.splice(this.activeContactIndex, 1);
+        },
+
+        // se il menu è aperto si chiude e viceversa
+        toggleMenu() {
+            this.openedMenu = !this.openedMenu;
         }
     },
     

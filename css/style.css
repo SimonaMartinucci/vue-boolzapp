@@ -94,11 +94,26 @@ body {
 .settings {
     text-align: right;
     margin-right: 25px;
+    position: relative;
 }
 
 .settings .fa-solid {
     margin-left: 18px;
     font-size: 20px;
+    color: var(--light-gray);
+}
+
+.menu {
+    width: 150px;
+    background-color: white;
+    position: absolute;
+    right: -2px;
+    bottom: -70px;
+    z-index: 999;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #8c9295;
     color: var(--light-gray);
 }
 
@@ -155,16 +170,11 @@ body {
     cursor: pointer;
 }
 
-.menu {
-    width: 150px;
-    background-color: white;
+.content .menu {
     position: absolute;
     right: 3px;
     bottom: -58px;
     z-index: 999;
-    font-size: 14px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px #8c9295;
 }
 
 .info,
