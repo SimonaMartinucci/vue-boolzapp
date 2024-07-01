@@ -181,11 +181,15 @@ createApp({
     methods: {
         // recupero solo orario
         getTime(dateTime) {
+            if(!dateTime) return 'non disponibile';
+
             return dateTime.split(' ')[1].slice(0, 5);
         },
 
         // recupero solo data
         getDate(dateTime) {
+            if(!dateTime) return;
+
             return dateTime.split(' ')[0].slice(0, 10);
         },
 
@@ -274,7 +278,7 @@ createApp({
                     });
 
             // rimetto 'ultimo accesso' al posto di 'sta scrivendo'
-            setTimeout(this.stoScrivendo = false, 2000);
+            this.stoScrivendo = false;
         },
 
         // funzione per barra di ricerca
@@ -300,7 +304,13 @@ createApp({
             };
         },
 
-        
+        deleteChat() {
+            this.contacts[this.activeContactIndex].messages = [];
+        },
+
+        deleteContact() {
+            this.contacts.splice(this.activeContactIndex, 1);
+        }
     },
     
     
