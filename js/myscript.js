@@ -330,7 +330,7 @@ createApp({
 
         addContact() {
             // aggiungo nuovo contatto 
-            this.contacts.push({
+            this.contacts.unshift({
                 name: this.newContName,
                 avatar: this.newContAvatar,
                 visible: true,
