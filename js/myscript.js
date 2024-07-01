@@ -9,6 +9,7 @@ createApp({
             inputSearch: '',
             filteredArray: [],
             menuIndex: null,
+            autoResponse: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -195,6 +196,17 @@ createApp({
             this.activeMessageIndex = index;
         },
 
+        // recupero tramite API delle risposte casuali
+        responseGenerator() {
+            return axios.get('https://api.quotable.io/random')
+                .then((response) => {
+                    return this.autoResponse = response.data.content;
+                })
+                .catch((error) => {
+                    console.error('Error fetching random quote:', error);
+                });
+        },
+
         // inserisco funzione per aggiungere messaggio con tasto enter
         addMessage() {
             // metto condizione in modo da non far inviare messaggi vuoti
@@ -231,7 +243,7 @@ createApp({
 
         // funzione risposta automatica
         autoText() {
-            // stesso procedimento precedente per la data e l'ora attuale
+            // // stesso procedimento precedente per la data e l'ora attuale
             const now = new Date();
 
                 const formattedTime = new Intl.DateTimeFormat('it-IT', {
@@ -241,16 +253,21 @@ createApp({
                     hour12: false
                 }).format(now);
 
-                // creo messaggio automatico
-                const autoMessage =
-                {
-                    date: `${now.toLocaleDateString('it-IT')} ${formattedTime}`,
-                    message: 'Ok',
-                    status: 'received'
-                };
+            this.responseGenerator()
+                    .then((quote) => {
+                        // Ottenuta la citazione, aggiungo il messaggio automatico
+                        const autoMessage = {
+                            date: `${now.toLocaleDateString('it-IT')} ${formattedTime}`,
+                            message: quote,
+                            status: 'received'
+                        };
 
-                // pusho oggetto nell'array
-                this.contacts[this.activeContactIndex].messages.push(autoMessage);
+                        // pusho l'oggetto nell'array
+                        this.contacts[this.activeContactIndex].messages.push(autoMessage);
+                    })
+                    .catch((error) => {
+                        console.error(error);
+                    });
         },
 
         // funzione per barra di ricerca
@@ -274,11 +291,14 @@ createApp({
             if (this.menuIndex === index) {
                 this.menuIndex = null; 
             };
-        }
+        },
+
+        
     },
     
-    // faccio in modo che vengano visualizzati tutti i contatti al caricamento della pagina
+    
     mounted() {
+        // faccio in modo che vengano visualizzati tutti i contatti al caricamento della pagina
         this.filteredArray = this.contacts;
     }
 }).mount('#app');
