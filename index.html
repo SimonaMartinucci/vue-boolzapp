@@ -95,7 +95,8 @@
                         </div>
                         <div class="access">
                             <div class="username">{{contacts[activeContactIndex].name}}</div>
-                            <div class="last-access">Ultimo accesso il {{ getDate(contacts[activeContactIndex].messages[contacts[activeContactIndex].messages.length - 1].date) }} alle {{ getTime(contacts[activeContactIndex].messages[contacts[activeContactIndex].messages.length - 1].date) }}</div>
+                            <div class="last-access" v-if="stoScrivendo === false">Ultimo accesso il {{ getDate(contacts[activeContactIndex].messages[contacts[activeContactIndex].messages.length - 1].date) }} alle {{ getTime(contacts[activeContactIndex].messages[contacts[activeContactIndex].messages.length - 1].date) }}</div>
+                            <div class="last-access" v-else>Sta scrivendo...</div>
                         </div>
                     </div>
                     <div class="settings">

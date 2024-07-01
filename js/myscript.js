@@ -10,6 +10,7 @@ createApp({
             filteredArray: [],
             menuIndex: null,
             autoResponse: '',
+            stoScrivendo: false,
             contacts: [
                 {
                     name: 'Michele',
@@ -237,8 +238,11 @@ createApp({
             // svuoto ogni volta il campo di inserimento dei messaggi
             this.inputMessage = '';
 
-            // faccio partire funzione di risposta automatica dopo 1 secondo
-            setTimeout(this.autoText, 1000)
+            // faccio comparire scritta 'sta scrivendo' mentre si aspetta risposta 
+            setTimeout(this.stoScrivendo = true, 1000);
+
+            // faccio partire funzione di risposta automatica dopo 2 secondi
+            setTimeout(this.autoText, 2000);
         },
 
         // funzione risposta automatica
@@ -268,6 +272,9 @@ createApp({
                     .catch((error) => {
                         console.error(error);
                     });
+
+            // rimetto 'ultimo accesso' al posto di 'sta scrivendo'
+            setTimeout(this.stoScrivendo = false, 2000);
         },
 
         // funzione per barra di ricerca
