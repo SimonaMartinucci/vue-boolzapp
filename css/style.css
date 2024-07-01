@@ -285,3 +285,12 @@ body {
 .active {
     background-color: #eaeaea;
 }
+
+.cont-chat .last-access {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 300px;
+    display: inline-block;
+    padding-right: 3px;
+}
