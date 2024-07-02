@@ -117,6 +117,8 @@
                         <a href="#">
                             <i class="fa-solid fa-ellipsis-vertical" @click="toggleDeleteMenu">
                                 <div class="menu" v-if="openedDeleteMenu === true">
+                                    <div class="delete" @click="increaseFont">Increase font size</div>
+                                    <div class="delete" @click="decreaseFont">Decrease font size</div>
                                     <div class="delete" @click="deleteChat">Delete chat</div>
                                     <div class="delete" @click="deleteContact">Delete contact</div>
                                 </div>
@@ -126,7 +128,7 @@
                 </div>
                 <!-- parte contenuto messaggi -->
                 <div class="content">
-                    <div class="message" v-for="(text, index) in contacts[activeContactIndex].messages" :key="index" :class="text.status === 'sent' ? 'sent' : 'rec'" @click="activeMessage(index)">
+                    <div class="message" :style="{ fontSize: fontSize + 'px' }" v-for="(text, index) in contacts[activeContactIndex].messages" :key="index" :class="text.status === 'sent' ? 'sent' : 'rec'" @click="activeMessage(index)">
                         <span>{{text.message}}</span>
                         <div class="hour">{{ getTime(text.date) }}</div>
                         <i class="fa-solid fa-chevron-down" @click="activeMenu(index)"></i>

@@ -15,6 +15,7 @@ createApp({
             openedMenu: false,
             newContName: '',
             newContAvatar: '',
+            fontSize: 12,
             contacts: [
                 {
                     name: 'Michele',
@@ -343,6 +344,16 @@ createApp({
 
             // chiudo il menu
             this.openedMenu = false;
+        },
+
+        increaseFont() {
+            this.fontSize += 1;
+        },
+
+        decreaseFont() {
+            if(this.fontSize > 12) {
+                this.fontSize -= 1;
+            }
         }
     },
     
